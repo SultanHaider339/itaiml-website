@@ -1,0 +1,11 @@
+(function(){
+  const nav=[['HOME','index.html'],['SUCCESS STORIES','success-stories.html'],['SERVICES','services.html'],['ABOUT US','about.html'],['CONTACT US','contact.html']];
+  const tag=text=>`<span class="home-eyebrow">${text}</span>`;
+  const arrow=(href,label='Learn More')=>`<a class="home-arrow-link" href="${href}"><span class="home-arrow">›</span><span>${label}</span></a>`;
+  const header=()=>`<header class="home-header"><div class="home-wrap home-header-row"><a class="home-brand" href="index.html"><span class="home-brand-mark"></span><span>IT AI <b>ML</b><small>INTELLIGENCE LAB</small></span></a><button class="home-menu" aria-label="Open menu">MENU</button><nav class="home-nav">${nav.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}</nav></div></header>`;
+  const footer=()=>`<footer class="home-footer"><div class="home-wrap home-footer-grid"><div><a class="home-brand" href="index.html"><span class="home-brand-mark"></span><span>IT AI <b>ML</b><small>INTELLIGENCE LAB</small></span></a><p>AI, software and cybersecurity solutions for the work that matters.</p></div><div><h3>SERVICES</h3><a href="services.html">Generative AI</a><a href="services.html">Cybersecurity</a><a href="services.html">Application Development</a></div><div><h3>QUICK LINKS</h3><a href="success-stories.html">Projects</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a></div><div><h3>CONTACT</h3><p>hello@itai-ml.example</p><p>Approved contact details pending.</p></div></div><div class="home-wrap home-footer-bottom"><span>© 2026 IT AI ML</span><span>Privacy · Accessibility · Content approval pending</span></div></footer>`;
+  const page=(content)=>`<div class="clean-page">${header()}<main>${content}</main>${footer()}</div>`;
+  const intro=(kicker,title,lead)=>`<section class="clean-hero"><div class="home-wrap"><a class="clean-back" href="index.html">← Back to home</a>${tag(kicker)}<h1>${title}</h1><p>${lead}</p></div></section>`;
+  const bind=()=>{const menu=document.querySelector('.home-menu');const navEl=document.querySelector('.home-nav');if(menu)menu.addEventListener('click',()=>{const open=navEl.classList.toggle('open');menu.textContent=open?'CLOSE':'MENU';});};
+  window.ITAI={tag,arrow,header,footer,page,intro,bind};
+})();
